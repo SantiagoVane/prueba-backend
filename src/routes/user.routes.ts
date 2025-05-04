@@ -1,3 +1,7 @@
+/*
+Rutas del usuario.
+ */
+
 import { Router } from 'express';
 import { getUsers, addUser } from '../controllers/user.controller';
 
