@@ -2,18 +2,25 @@
 Modelo del producto
  */
 
-import mongoose, { Document, Schema } from 'mongoose';
+import mongoose, { Schema, Document } from 'mongoose';
 
 export interface IProduct extends Document {
-    title: string;
+    name: string;
     description: string;
-    createdBy: mongoose.Types.ObjectId;
+    price: number;
+    stock: number;
 }
 
-const productSchema = new Schema<IProduct>({
-    title: { type: String, required: true },
-    description: { type: String, required: true },
-    createdBy: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-});
+const ProductSchema = new Schema<IProduct>(
+    {
+        name: { type: String, required: true },
+        description: { type: String },
+        price: { type: Number, required: true },
+        stock: { type: Number, required: true },
+    },
+    {
+        timestamps: true,
+    }
+);
 
-export default mongoose.model<IProduct>('Product', productSchema);
+export default mongoose.model<IProduct>('Product', ProductSchema);

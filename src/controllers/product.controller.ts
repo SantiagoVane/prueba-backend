@@ -12,17 +12,20 @@ export const createProduct = async (req: Request, res: Response) => {
             return res.status(401).json({ error: 'No autorizado' });
         }
 
-        const { title, description } = req.body;
+        const { name, description, price, stock } = req.body;
 
         const product = new Product({
-            title,
+            name,
             description,
+            price,
+            stock,
             createdBy: req.user.id
         });
 
         await product.save();
         res.status(201).json(product);
     } catch (err) {
+        console.error('❌ Error al crear producto:', err);
         res.status(500).json({ error: 'Error al crear producto' });
     }
 };

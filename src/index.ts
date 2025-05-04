@@ -18,11 +18,13 @@ app.use(express.json());
 
 app.use('/api/users', userRoutes);
 
-app.use('/api/products', productRoutes);
+//app.use('/api/products', productRoutes);
 
 app.use('/api/orders', orderRoutes);
 
 app.use('/orders', orderRoutes);
+
+app.use('/products', productRoutes);
 
 dotenv.config();
 
